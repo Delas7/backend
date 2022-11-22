@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Makeplaylist!</h1>
+
+
+    <div class="slidecontainer">
+        <form action="/makeplaylist/submit" method="POST">
+            <p>name</p>
+            <input tyep="text" name="playlistname">
+            <p>ratio</p>
+            <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="ratio">
+            <button type="submit" class="btn btn-primary">Make!</button>
+        </form>
+    </div>
+</body>
+</html>

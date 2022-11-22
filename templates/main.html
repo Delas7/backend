@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Main Page</h1>
+
+
+    <form action="/main/playlist" , method="POST">
+        <button type="submit" class="btn btn-primary">make_playlist</button>
+    </form>
+
+    <form action="/main/playlist" , method="GET">
+        <button type="submit" class="btn btn-primary">select_playlist</button>
+    </form>
+
+    <form action="/main/playlist" , method="DELETE">
+        <input type="hidden" name="_method" value="DELETE"/>
+        <input type="text" name="playlist_name">
+        <button type="submit" class="btn btn-primary">delete_playlist</button>
+    </form>
+
+    <audio controls>
+        <source src="{{url_for('static', filename='music/26378.mp3')}}" type="audio/mpeg">
+    </audio><br/>
+    <audio controls>
+        <source src="{{url_for('static', filename='music/38083.mp3')}}" type="audio/mpeg">
+    </audio><br/>
+    <audio controls>
+        <source src="{{url_for('static', filename='music/8220595.mp3')}}" type="audio/mpeg">
+    </audio><br/>
+    <div style="overflow:auto; width:500px; height:150px;">
+        <h3>PlayList</h3>
+        <h4>{{ playlist_name }}</h4>
+        {% for one_list in playlist %}
+        <li>{{ one_list }}</li>
+        {% endfor %}
+    </div>
+
+    <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/BBdC1rl5sKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     -->
+    <form action="/main/addsong", method="GET">
+        <button type="submit" class="btn btn-primary">addsong</button>
+    </form>
+
+    <form action="/main/update-recommand", method="GET">
+        <button type="submit" class="btn btn-primary">update</button>
+    </form>
+
+    
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>add song</h1>
+
+    <div>
+      {% for song in playlist %}
+      <li> <a href="/songinfo/{{song[1]}}">{{song[0]}}</a>
+        <button type="submit" class="btn btn-primary">버튼</button>
+      </li>
+      {% endfor %}
+
+    </div>
+
+    <form action="/addpage/song" method="GET">
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" name="song_name">
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary">Find</button>
+          </div>
+        </div>
+    </form>
+
+    <!-- <form action="/addpage/songinfo" method="GET">
+      <div class="form-row">
+        <div class="col">
+          <input type="hidden" class="form-control" name="song_id" value="555222">
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">song1</button>
+        </div>
+      </div>
+    </form> -->
+    
+    {% for el in data %}
+
+    <a href="./songinfo">{{el}}</a><br/>
+      <!-- <form action="/addpage/songinfo" method="GET">
+        <div class="form-row">
+          <div class="col">
+            <input type="hidden" class="form-control" name="song_id" value= {{el}}>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-primary">{{el}}</button>
+          </div>
+        </div>
+      </form> -->
+    {% endfor %}
+
+</body>
+</html>
