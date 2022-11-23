@@ -8,13 +8,30 @@
 </head>
 <body>
     <h1>Main Page</h1>
-
+    <div style="overflow:auto; width:300px; height:150px;">
+        <h3>my playlist</h3>
+        {% for pl in total_list %}
+        <ul>
+            <a style="width:50;float:left;">{{ pl }}</a>
+            <form action="/main/playlist", method="GET" style="width:50;float:left;">
+                <button type="submit" class="btn btn-primary"> 선택 </button>
+                <input type="hidden" name="playlist" value="{{pl}}">
+            </form>
+            <form action="/main/playlist", method="DELETE" style="width:50;float:left;">
+                <button type="submit" class="btn btn-primary"> 삭제 </button>
+                <input type="hidden" name="_method" value="DELETE"/>
+                <input type="hidden" name="playlist" value="{{pl}}">
+            </form>
+            <br/>
+        </ul>
+        {% endfor %}
+    </div>
 
     <form action="/main/playlist" , method="POST">
         <button type="submit" class="btn btn-primary">make_playlist</button>
     </form>
 
-    <form action="/main/playlist" , method="GET">
+    <!-- <form action="/main/playlist" , method="GET">
         <button type="submit" class="btn btn-primary">select_playlist</button>
     </form>
 
@@ -22,7 +39,7 @@
         <input type="hidden" name="_method" value="DELETE"/>
         <input type="text" name="playlist_name">
         <button type="submit" class="btn btn-primary">delete_playlist</button>
-    </form>
+    </form> -->
 
     <audio controls>
         <source src="{{url_for('static', filename='music/26378.mp3')}}" type="audio/mpeg">
@@ -43,8 +60,9 @@
 
     <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/BBdC1rl5sKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
      -->
-    <form action="/main/addsong", method="GET">
+    <form action="/addpage/song", method="GET">
         <button type="submit" class="btn btn-primary">addsong</button>
+        <input type="hidden" name="song_name" value="">
     </form>
 
     <form action="/main/update-recommand", method="GET">

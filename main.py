@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template, make_response, session
+from flask import Flask, jsonify, request, render_template, make_response, session, redirect, url_for
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask_cors import CORS
 from view import mainpage, addpage, makeplaylist, songinfopage
@@ -17,7 +17,11 @@ app.register_blueprint(songinfopage.songinfo, url_prefix='/songinfo')
 
 @app.route('/')
 def main():
-    return render_template('main.html')
+    try:
+        session.pop('name', None)
+    except:
+        pass
+    return redirect(url_for('main.main'))
 
 
 

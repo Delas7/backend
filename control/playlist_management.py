@@ -12,7 +12,7 @@ class Playlist():
 
     
     def get_songlist(self):
-        return str(self.song_list)
+        return self.song_list
     
     @staticmethod
     def make_new_playlist(playlist_name, ratio):
@@ -30,6 +30,10 @@ class Playlist():
     def delete_playlist(playlist_name):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
+        playlist_id = Playlist.get_playlist_id(playlist_name)[0][0]
+        
+        sql = "DELETE FROM playlist WHERE PLAYLIST_ID = '%s'" % (str(playlist_id))
+        db_cursor.execute(sql)
         sql = "DELETE FROM playlist_info WHERE PLAYLIST_NAME = '%s'" % (str(playlist_name))
         db_cursor.execute(sql)
         try:
@@ -39,15 +43,20 @@ class Playlist():
             print('error')
     
     @staticmethod
-    def get_playlist_id(playlist_name):
+    def get_playlist_id(playlist_name=None):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
-        sql = "SELECT * FROM playlist_info WHERE PLAYLIST_NAME = '%s'" % (str(playlist_name))
+        if playlist_name is None:
+            sql = "SELECT * FROM playlist_info"
+        else:
+            sql = "SELECT * FROM playlist_info WHERE PLAYLIST_NAME = '%s'" % (str(playlist_name))
         db_cursor.execute(sql)
-        data = db_cursor.fetchone()
+        data = db_cursor.fetchall()
+        print(data,'!!')
         if not data:
             return None
-        return data[0]
+        return data
+    
         
     
     @staticmethod
@@ -64,6 +73,7 @@ class Playlist():
     
     @staticmethod
     def add_song(playlist_id, song_id):
+        print('ddddd ', playlist_id)
         Playlist.delete_song(playlist_id, song_id)
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()

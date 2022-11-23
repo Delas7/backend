@@ -12,7 +12,11 @@
     <h3>{{ song_data.get_song_ids()[0] }}   {{ song_data.get_song_title()[0] }}</h3>
     <h4>{{ song_data }}</h4>
 
-    <button type='button' onclick="window.location.href='/addpage'">button</button>
+    <form action="/songinfo/return_page" method="POST">
+      <button type='submit'>돌아가기</button>
+    </form>
+    
+    
     <form action="/songinfo/insert" method="POST">
         <button type='submit'>추가</button>
         <input type="hidden" name="song_id" value={{song_data.get_song_ids()[0]}}>
