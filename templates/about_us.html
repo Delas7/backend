@@ -53,32 +53,32 @@
       <div class="container">
         <!-- The main logo is shown in mobile version only. The centered nav-logo in nav menu is displayed in desktop view  -->
         <div class="logo d-block d-lg-none">
-          <a href="mainLogo.html"
+          <a href="{{url_for('mainlogo.main')}}"
             ><img src="../static/assets/img/희열.gif" alt="" class="img-fluid"
           /></a>
         </div>
 
         <nav class="nav-menu d-none d-lg-block">
           <ul class="nav-inner">
-            <li><a href="mainLogo.html">Home</a></li>
+            <li class="active"><a href="{{url_for('main1.main1_')}}">Home</a></li>
             <li class="drop-down">
               <a href="">About</a>
               <ul>
-                <li class="active"><a href="about_us.html">About Us</a></li>
-                <li><a href="team.html">Team</a></li>
+                <li><a href="{{url_for('about_us.about_us_')}}">About Us</a></li>
+                <li><a href="{{url_for('team.team_')}}">Team</a></li>
               </ul>
             </li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="{{url_for('services.services_')}}">Services</a></li>
 
             <li class="nav-logo">
-              <a href="mainLogo.html"
+              <a href="{{url_for('mainlogo.main')}}"
                 ><img src="../static/assets/img/nomove_희열.png" alt="" class="img-fluid"
               /></a>
             </li>
 
-            <li><a href="stack.html">Stack</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{url_for('stack.stack_')}}">Stack</a></li>
+            <li><a href="{{url_for('pricing.pricing_')}}">Pricing</a></li>
+            <li><a href="{{url_for('contact.contact_')}}">Contact</a></li>
           </ul>
         </nav>
         <!-- .nav-menu -->
