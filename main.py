@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request, render_template, make_response, sessi
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask_cors import CORS
 import os
-from view import mainlogo, main1, about_us, contact, pricing, services, stack, team
+from view import mainlogo, main1, about_us, contact, pricing, services, stack, team, all_music
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -18,6 +18,7 @@ app.register_blueprint(pricing.pricing, url_prefix='/pricing')
 app.register_blueprint(services.services, url_prefix='/services')
 app.register_blueprint(stack.stack, url_prefix='/stack')
 app.register_blueprint(team.team, url_prefix='/team')
+app.register_blueprint(all_music.all_music, url_prefix='/all_music')
 
 
 @app.route('/')

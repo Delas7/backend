@@ -5,6 +5,7 @@ from control.playlist_management import Playlist
 
 mainlogo = Blueprint('mainlogo', __name__)
 
+# mainlogo page
 @mainlogo.route('/')
 def main():
     return render_template('mainLogo.html')
